@@ -1,4 +1,4 @@
-#include "model.h"
+#include "mobilenetv2_20240104_041006.h"
 
 #include "mbed.h"
 #include <Arduino_OV767X.h>
@@ -10,7 +10,7 @@
 #include <tensorflow/lite/micro/system_setup.h>
 #include <tensorflow/lite/schema/schema_generated.h>
 
-static const char *label[] = {"book", "mug", "unknown"};
+static const char *label[] = {"whole", "broken"};
 static int32_t bytes_per_frame;
 static int32_t bytes_per_pixel;
 static bool debug_application = false;
@@ -22,8 +22,8 @@ static int32_t height_i = 0; // Initialized in the setup() function
 static int32_t width_i  = 0; // Initialized in the setup() function
 
 // Resolution of TensorFlow Lite input model
-static int32_t height_o = 48;
-static int32_t width_o  = 48;
+static int32_t height_o = 244;
+static int32_t width_o  = 244;
 
 // Scaling factors required by the resize operator
 static float scale_x = 0.0f;  // Initialized in the setup() function
@@ -163,11 +163,10 @@ void setup() {
 void loop() {
   Camera.readFrame(data);
   uint8_t rgb888[3];
-  if(debug_application) {
-    Serial.println("<image>");
-    Serial.println(width_o);
-    Serial.println(height_o);
-  }
+  Serial.println("<image>");
+  Serial.println(width_o);
+  Serial.println(height_o);
+  
 
   int32_t idx = 0;
   for (int32_t yo = 0; yo < height_o; yo++) {
@@ -241,10 +240,7 @@ void loop() {
       }
     }
   }
-  if(debug_application) {
-    Serial.println("</image>");
-    while(1);
-  }
+  Serial.println("</image>");
 
   // Run inference
   TfLiteStatus invoke_status = tflu_interpreter->Invoke();
@@ -255,7 +251,7 @@ void loop() {
 
   size_t ix_max = 0;
   float  pb_max = 0;
-  for (size_t ix = 0; ix < 3; ix++) {
+  for (size_t ix = 0; ix < 2; ix++) {
     if(tflu_o_tensor->data.f[ix] > pb_max) {
       ix_max = ix;
       pb_max = tflu_o_tensor->data.f[ix];
