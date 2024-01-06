@@ -1,0 +1,1 @@
+## The Edge consists of the files that are used in the Edge portion of this project, which consists of the code uploaded to the Arduino (in runningML) and capturePost.py, which captures and posts the images to the backend. 
