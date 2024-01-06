@@ -15,3 +15,6 @@ Below is a picture of my camera setup with a Saltine and also a hamster:
 
 ![image](https://github.com/bbonifacio-at-mudd/Live-CV-on-Arduino-with-AWS-Backend/assets/114462423/8f981642-f6b9-4890-9e40-a7b4a1735e5a)
 
+
+
+A huge thanks to the numerous free AWS tutorials, both on YouTube and from AWS's website, and the Maker Pro website for help with hardware implementation. 
