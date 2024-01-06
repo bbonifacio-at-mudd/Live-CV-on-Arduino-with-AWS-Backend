@@ -69,3 +69,8 @@ def lambda_handler(event, context):
                 'statusCode': 500,
                 'body': json.dumps(f'Failed in Lambda Post: {str(e)}')
             }
+    else:
+        return {
+            'statusCode': 400,
+            'body': json.dumps(f'Invalid HTTP Method. Only support POST, must be admin and do it manually in AWS for other actions: {http_method}')
+        }
