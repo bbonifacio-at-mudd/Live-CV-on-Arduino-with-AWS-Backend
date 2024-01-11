@@ -1,5 +1,7 @@
 # Welcome to the Live Computer Vision on Arduino with an AWS Backend Project! 
 
+Here is a link to a short article on my website that I wrote about this project: https://brandonbonifacio.com/projects/live-computer-vision-on-arduino-with-aws-backend/
+
 The title of this project succinctly explains what I did in this project, and I also provide a full System Diagram below to help explain. I completed this project during my winter break from December 2023 - January 2024 with the purpose of gaining more experience with live ML deployment and cloud engineering. 
 
 ![image](https://github.com/bbonifacio-at-mudd/Live-CV-on-Arduino-with-AWS-Backend/assets/114462423/073e11f4-4f01-424e-b002-f145b1d3df9e)
